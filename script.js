@@ -1,142 +1,108 @@
-// volunteer stuff 
-var volunteerData = [
+// page navigation
+function showPage(pageName) {
+    // hide all pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    // show selected page
+    document.getElementById('page-' + pageName).classList.add('active');
+    // update nav
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if(link.onclick && link.onclick.toString().includes(pageName)) {
+            link.classList.add('active');
+        }
+    });
+    // scroll to top
+    window.scrollTo(0, 0);
+}
+
+// volunteer data
+var opportunities = [
     {
         id: "1",
         title: "Food Bank Sorting Drive",
         organization: "Gwinnett County Food Bank",
-        description: "Help sort and organize donated food items for families in need across Gwinnett County. Great for groups and first-time volunteers!",
+        description: "Help sort and organize donated food items for families in need. Great for groups!",
         image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=600&fit=crop",
-        date: "February 15, 2026",
-        time: "9:00 AM - 12:00 PM",
+        date: "Feb 15, 2026",
         duration: "3 hours",
-        location: "550 Swanson Drive, Lawrenceville, GA 30043",
-        category: "Food Security",
-        additionalInfo: "Wear closed-toe shoes. Water provided."
+        location: "Lawrenceville, GA",
+        category: "Food Security"
     },
     {
         id: "2",
-        title: "opportunity 2",
-        organization: "organization 2",
-        description: "description 2",
+        title: "Community Tree Planting",
+        organization: "Gwinnett Parks",
+        description: "Plant native trees and beautify local parks. Tools provided!",
         image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&h=600&fit=crop",
-        date: "date 2",
-        time: "time 2",
-        duration: "duration 2",
-        location: "location 2",
-        category: "category",
-        additionalInfo: "idk"
+        date: "Feb 22, 2026",
+        duration: "3 hours",
+        location: "Duluth, GA",
+        category: "Environment"
     },
     {
         id: "3",
-        title: "3",
-        organization: "3",
-        description: "3",
+        title: "After-School Tutoring",
+        organization: "Gwinnett Library",
+        description: "Tutor elementary students in reading and math.",
         image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop",
-        date: "3",
-        time: "3M",
-        duration: "3",
-        location: "3",
-        category: "3",
-        additionalInfo: "3"
+        date: "Every Tuesday",
+        duration: "2 hours",
+        location: "Suwanee, GA",
+        category: "Education"
     },
     {
         id: "4",
-        title: "4",
-        organization: "4",
-        description: "4",
+        title: "Neighborhood Cleanup",
+        organization: "Keep Gwinnett Beautiful",
+        description: "Pick up litter and beautify public spaces.",
         image: "https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?w=800&h=600&fit=crop",
-        date: "4",
-        time: "4",
-        duration: "4",
-        location: "4",
-        category: "4",
-        additionalInfo: "4"
+        date: "Mar 1, 2026",
+        duration: "3 hours",
+        location: "Lilburn, GA",
+        category: "Environment"
     },
     {
         id: "5",
-        title: "5",
-        organization: "5",
-        description: "P5",
+        title: "Soup Kitchen Service",
+        organization: "Hope Shelter",
+        description: "Prepare and serve meals to those in need.",
         image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=600&fit=crop",
-        date: "5",
-        time: "5",
-        duration: "5",
-        location: "5",
-        category: "5",
-        additionalInfo: "5"
+        date: "Every Saturday",
+        duration: "3 hours",
+        location: "Duluth, GA",
+        category: "Hunger Relief"
     }
 ];
 
-// stuff i need 
-var cardList = [...volunteerData];
-var myMatches = [];
-var lastThing = null;
+var cards = [...opportunities];
+var matched = [];
+var lastSwiped = null;
 
-// get elements
+// elements
 var stack = document.getElementById('cardStack');
-var endThingy = document.getElementById('endScreen');
-var matchText = document.getElementById('matchCount');
-var resetButton = document.getElementById('resetBtn');
-var btns = document.getElementById('swipeButtons');
-var noBtn = document.getElementById('rejectBtn');
-var yesBtn = document.getElementById('acceptBtn');
-var undoButton = document.getElementById('undoBtn');
-var badge = document.getElementById('matchBadge');
-var badgeNum = document.getElementById('matchCountBadge');
+var endScreen = document.getElementById('endScreen');
+var matchCount = document.getElementById('matchCount');
+var resetBtn = document.getElementById('resetBtn');
+var swipeButtons = document.getElementById('swipeButtons');
+var rejectBtn = document.getElementById('rejectBtn');
+var acceptBtn = document.getElementById('acceptBtn');
+var undoBtn = document.getElementById('undoBtn');
+var matchBadge = document.getElementById('matchBadge');
+var matchCountBadge = document.getElementById('matchCountBadge');
 
-// make card html
-function makeCard(opp, idx) {
-    var topOne = idx === cardList.length - 1;
-    
+function createCard(opp, index) {
+    var isTop = index === cards.length - 1;
     var html = `
-        <div class="swipe-card" data-id="${opp.id}" data-index="${idx}" style="z-index: ${idx}; ${!topOne ? 'transform: scale(0.95) translateY(10px); opacity: 0.8;' : ''}">
-            <div class="card">
-                <div class="card-image-container">
-                    <img src="${opp.image}" alt="${opp.title}" class="card-image">
-                    <div class="card-image-overlay"></div>
-                    <div class="card-category">${opp.category}</div>
-                    <div class="card-accept">YES! ✓</div>
-                    <div class="card-reject">NOPE</div>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">${opp.title}</h3>
-                    <p class="card-organization">${opp.organization}</p>
-                    <p class="card-description">${opp.description}</p>
-                    <div class="card-details">
-                        <div class="card-detail">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="16" y1="2" x2="16" y2="6"></line>
-                                <line x1="8" y1="2" x2="8" y2="6"></line>
-                                <line x1="3" y1="10" x2="21" y2="10"></line>
-                            </svg>
-                            <span>${opp.date}</span>
-                        </div>
-                        <div class="card-detail">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            <span>${opp.duration}</span>
-                        </div>
-                        <div class="card-detail card-detail-full">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                            <span>${opp.location}</span>
-                        </div>
-                        ${opp.additionalInfo ? `
-                        <div class="card-detail card-detail-full card-detail-info">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="12" y1="16" x2="12" y2="12"></line>
-                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                            </svg>
-                            <span>${opp.additionalInfo}</span>
-                        </div>
-                        ` : ''}
-                    </div>
+        <div class="swipe-card" data-id="${opp.id}" style="z-index:${index}; ${!isTop ? 'transform:scale(0.95) translateY(10px); opacity:0.8;' : ''}">
+            <div class="card-image-container" style="background-image:url('${opp.image}')"></div>
+            <div class="card-content">
+                <h3 class="card-title">${opp.title}</h3>
+                <p class="card-organization">${opp.organization}</p>
+                <p class="card-description">${opp.description}</p>
+                <div class="card-details">
+                    <span>📅 ${opp.date}</span>
+                    <span>⏰ ${opp.duration}</span>
+                    <span>📍 ${opp.location}</span>
                 </div>
             </div>
         </div>
@@ -144,204 +110,158 @@ function makeCard(opp, idx) {
     return html;
 }
 
-// show cards
-function showCards() {
-    stack.innerHTML = cardList.map((thing, i) => makeCard(thing, i)).join('');
-    
-    if(cardList.length > 0) {
+function renderCards() {
+    if(!stack) return;
+    stack.innerHTML = cards.map((o, i) => createCard(o, i)).join('');
+    if(cards.length > 0) {
         var topCard = stack.querySelector('.swipe-card:last-child');
-        if(topCard) {
-            makeDraggable(topCard);
-        }
+        if(topCard) setupDrag(topCard);
     }
 }
 
-// drag stuff
-function makeDraggable(c) {
-    var dragging = false;
-    var startPos = 0;
-    var currentPos = 0;
+function setupDrag(card) {
+    var isDragging = false;
+    var startX = 0;
+    var currentX = 0;
     
-    var yesLabel = c.querySelector('.card-accept');
-    var noLabel = c.querySelector('.card-reject');
-    
-    function start(e) {
-        dragging = true;
-        c.classList.add('dragging');
-        startPos = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-        currentPos = startPos;
+    function handleStart(e) {
+        isDragging = true;
+        card.classList.add('dragging');
+        startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
     }
     
-    function move(e) {
-        if(!dragging) return;
-        
+    function handleMove(e) {
+        if(!isDragging) return;
         e.preventDefault();
-        var x = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-        currentPos = x;
-        var diff = currentPos - startPos;
-        var rot = diff / 10;
+        currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        var deltaX = currentX - startX;
+        var rotate = deltaX / 10;
+        card.style.transform = `translateX(${deltaX}px) rotate(${rotate}deg)`;
+    }
+    
+    function handleEnd() {
+        if(!isDragging) return;
+        isDragging = false;
+        card.classList.remove('dragging');
+        var deltaX = currentX - startX;
         
-        c.style.transform = `translateX(${diff}px) rotate(${rot}deg)`;
-        c.style.opacity = 1 - Math.abs(diff) / 400;
-        
-        if(diff > 50) {
-            yesLabel.style.opacity = Math.min(diff / 100, 1);
-            noLabel.style.opacity = 0;
-        }
-        else if(diff < -50) {
-            noLabel.style.opacity = Math.min(Math.abs(diff) / 100, 1);
-            yesLabel.style.opacity = 0;
-        }
-        else {
-            yesLabel.style.opacity = 0;
-            noLabel.style.opacity = 0;
+        if(deltaX > 100) {
+            swipeCard('right', card);
+        } else if(deltaX < -100) {
+            swipeCard('left', card);
+        } else {
+            card.style.transform = '';
         }
     }
     
-    function end() {
-        if(!dragging) return;
-        
-        dragging = false;
-        c.classList.remove('dragging');
-        
-        var diff = currentPos - startPos;
-        
-        if(diff > 100) {
-            doSwipe('right', c);
-        }
-        else if(diff < -100) {
-            doSwipe('left', c);
-        }
-        else {
-            c.style.transform = '';
-            c.style.opacity = '';
-            yesLabel.style.opacity = 0;
-            noLabel.style.opacity = 0;
-        }
-    }
-    
-    c.addEventListener('mousedown', start);
-    document.addEventListener('mousemove', move);
-    document.addEventListener('mouseup', end);
-    
-    c.addEventListener('touchstart', start, {passive: false});
-    document.addEventListener('touchmove', move, {passive: false});
-    document.addEventListener('touchend', end);
+    card.addEventListener('mousedown', handleStart);
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('mouseup', handleEnd);
+    card.addEventListener('touchstart', handleStart, {passive:false});
+    document.addEventListener('touchmove', handleMove, {passive:false});
+    document.addEventListener('touchend', handleEnd);
 }
 
-// swipe the card
-function doSwipe(dir, cardEl = null) {
-    if(cardList.length === 0) return;
+function swipeCard(direction, cardElement) {
+    if(cards.length === 0) return;
     
-    var thing = cardList[cardList.length - 1];
-    lastThing = thing;
+    var swiped = cards[cards.length - 1];
+    lastSwiped = swiped;
     
-    if(dir === 'right') {
-        myMatches.push(thing);
-        fixBadge();
+    if(direction === 'right') {
+        matched.push(swiped);
+        updateMatchBadge();
     }
     
-    var theCard = cardEl || stack.querySelector('.swipe-card:last-child');
-    if(theCard) {
-        theCard.classList.add('swiping-out');
-        var moveX = dir === 'right' ? 300 : -300;
-        theCard.style.transform = `translateX(${moveX}px) rotate(${dir === 'right' ? 25 : -25}deg)`;
-        theCard.style.opacity = '0';
+    var card = cardElement || stack.querySelector('.swipe-card:last-child');
+    if(card) {
+        card.style.transform = `translateX(${direction === 'right' ? 300 : -300}px) rotate(${direction === 'right' ? 25 : -25}deg)`;
+        card.style.opacity = '0';
         
         setTimeout(() => {
-            cardList.pop();
-            checkIfDone();
-            showCards();
-            showUndo();
+            cards.pop();
+            checkEndState();
+            renderCards();
+            showUndoButton();
         }, 300);
-    }
-    else {
-        cardList.pop();
-        checkIfDone();
-        showCards();
-        showUndo();
-    }
-}
-
-// undo last one
-function goBack() {
-    if(!lastThing) return;
-    
-    cardList.push(lastThing);
-    myMatches = myMatches.filter(x => x.id !== lastThing.id);
-    lastThing = null;
-    
-    showCards();
-    hideUndo();
-    fixBadge();
-    checkIfDone();
-}
-
-// show undo btn
-function showUndo() {
-    undoButton.style.display = 'flex';
-}
-
-function hideUndo() {
-    undoButton.style.display = 'none';
-}
-
-// update badge thing
-function fixBadge() {
-    if(myMatches.length > 0 && cardList.length > 0) {
-        badge.style.display = 'block';
-        badgeNum.textContent = myMatches.length;
-    }
-    else {
-        badge.style.display = 'none';
+    } else {
+        cards.pop();
+        checkEndState();
+        renderCards();
+        showUndoButton();
     }
 }
 
-// check if we're done
-function checkIfDone() {
-    if(cardList.length === 0) {
+function undoSwipe() {
+    if(!lastSwiped) return;
+    cards.push(lastSwiped);
+    matched = matched.filter(o => o.id !== lastSwiped.id);
+    lastSwiped = null;
+    renderCards();
+    hideUndoButton();
+    updateMatchBadge();
+    checkEndState();
+}
+
+function showUndoButton() {
+    if(undoBtn) undoBtn.style.display = 'block';
+}
+
+function hideUndoButton() {
+    if(undoBtn) undoBtn.style.display = 'none';
+}
+
+function updateMatchBadge() {
+    if(!matchBadge) return;
+    if(matched.length > 0 && cards.length > 0) {
+        matchBadge.style.display = 'block';
+        if(matchCountBadge) matchCountBadge.textContent = matched.length;
+    } else {
+        matchBadge.style.display = 'none';
+    }
+}
+
+function checkEndState() {
+    if(!stack || !endScreen) return;
+    if(cards.length === 0) {
         stack.style.display = 'none';
-        btns.style.display = 'none';
-        badge.style.display = 'none';
-        endThingy.style.display = 'block';
-        matchText.textContent = `You matched with ${myMatches.length} volunteer ${myMatches.length === 1 ? 'opportunity' : 'opportunities'}`;
-    }
-    else {
-        stack.style.display = 'flex';
-        btns.style.display = 'flex';
-        endThingy.style.display = 'none';
+        if(swipeButtons) swipeButtons.style.display = 'none';
+        if(matchBadge) matchBadge.style.display = 'none';
+        endScreen.style.display = 'block';
+        if(matchCount) matchCount.textContent = `You matched with ${matched.length} opportunities!`;
+    } else {
+        stack.style.display = 'block';
+        if(swipeButtons) swipeButtons.style.display = 'flex';
+        endScreen.style.display = 'none';
     }
 }
 
-// start over
-function startOver() {
-    cardList = [...volunteerData];
-    myMatches = [];
-    lastThing = null;
-    
-    showCards();
-    hideUndo();
-    fixBadge();
-    checkIfDone();
+function reset() {
+    cards = [...opportunities];
+    matched = [];
+    lastSwiped = null;
+    renderCards();
+    hideUndoButton();
+    updateMatchBadge();
+    checkEndState();
 }
 
-// button clicks
-noBtn.addEventListener('click', () => doSwipe('left'));
-yesBtn.addEventListener('click', () => doSwipe('right'));
-undoButton.addEventListener('click', goBack);
-resetButton.addEventListener('click', startOver);
+// event listeners
+if(rejectBtn) rejectBtn.addEventListener('click', () => swipeCard('left'));
+if(acceptBtn) acceptBtn.addEventListener('click', () => swipeCard('right'));
+if(undoBtn) undoBtn.addEventListener('click', undoSwipe);
+if(resetBtn) resetBtn.addEventListener('click', reset);
 
-// smooth scroll for links
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
+// contact form
+var contactForm = document.getElementById('contactForm');
+if(contactForm) {
+    contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        var target = document.querySelector(this.getAttribute('href'));
-        if(target) {
-            target.scrollIntoView({behavior: 'smooth'});
-        }
+        alert('Thanks! We will be in touch soon.');
+        this.reset();
     });
-});
+}
 
-// start everything
-showCards();
-checkIfDone();
+// initialize
+renderCards();
+checkEndState();
