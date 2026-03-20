@@ -2,6 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, addDoc, onSnapshot, orderBy, query } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
+// 🔥 REPLACE THESE WITH YOUR FIREBASE PROJECT CONFIG
 const firebaseConfig = {
     apiKey: "AIzaSyCaB7ZWO8H3yGb5HgYugPC5H34v04dQEIg",
     authDomain: "asdsa-dd21b.firebaseapp.com",
@@ -221,6 +222,7 @@ document.querySelectorAll('.filter-btn').forEach(function(btn) {
 });
 
 // ─── SWIPE DECK ───────────────────────────────────────────────────
+// Seed swipe opportunities
 var seedOpportunities = [
     { id: 's1', title: 'Food Bank Sorting Drive', org: 'Gwinnett County Food Bank', desc: 'Help sort donated food items for families in need. Great for groups and first-timers!', img: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=500&fit=crop', date: 'Feb 15, 2026', duration: '3 hours', loc: 'Lawrenceville, GA' },
     { id: 's2', title: 'Community Tree Planting', org: 'Gwinnett Parks & Recreation', desc: 'Plant native trees and beautify local parks. Tools and gloves provided!', img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&h=500&fit=crop', date: 'Feb 22, 2026', duration: '3 hours', loc: 'Duluth, GA' },
@@ -334,7 +336,8 @@ buildCards(); checkDone();
 buildResourceGrid();
 
 // ─── FIREBASE REALTIME LISTENER ───────────────────────────────────
-
+// Listens for new submitted resources in Firestore and adds them live
+// to both the resource grid AND the swipe deck
 var knownFirebaseIds = new Set();
 
 var q = query(collection(db, 'resources'), orderBy('createdAt', 'desc'));
@@ -349,6 +352,7 @@ onSnapshot(q, function(snapshot) {
 
             var img = catImages[data.cat] || catImages['Other'];
 
+            // Add to resource grid list
             var resEntry = {
                 name: data.name,
                 cat: data.cat,
@@ -359,9 +363,10 @@ onSnapshot(q, function(snapshot) {
                 img: img,
                 fromFirebase: true,
             };
-            allResources.unshift(resEntry);
+            allResources.unshift(resEntry); // new ones go to top
             buildResourceGrid();
 
+            // Add to swipe deck as a new opportunity
             var swipeEntry = {
                 id: 'fb_' + id,
                 title: data.name,
@@ -398,6 +403,7 @@ function showNewResourceToast(name) {
     toast.style.cssText = 'position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#1F2937;color:#fff;padding:14px 24px;border-radius:12px;font-size:14px;font-weight:600;z-index:99999;box-shadow:0 8px 24px rgba(0,0,0,.25);animation:toastIn .3s ease;max-width:90vw;text-align:center;';
     document.body.appendChild(toast);
 
+    // inject keyframe if not present
     if (!document.getElementById('toastStyle')) {
         var style = document.createElement('style');
         style.id = 'toastStyle';
@@ -555,6 +561,7 @@ var contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
+        // Replace button with inline success
         var btn = contactForm.querySelector('.submit-btn');
         btn.textContent = '✅ Sent! We\'ll be in touch.';
         btn.style.background = '#10B981';
