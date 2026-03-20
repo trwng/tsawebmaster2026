@@ -263,3 +263,4 @@ nav{display:flex;gap:28px;align-items:center;}
 .quiz-res-meta{font-size:13px;color:var(--tl);display:flex;flex-wrap:wrap;gap:12px;}
 .quiz-restart{margin-top:8px;background:none;border:2px solid var(--bd);border-radius:10px;padding:12px 28px;font-size:14px;font-weight:700;cursor:pointer;color:var(--tl);transition:.2s;}
 .quiz-restart:hover{border-color:var(--p);color:var(--p);}
+
