@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VolunteerGwinnett — Gwinnett County Community Resource Hub</title>
+    <title>VolunteerGwinnett — Gwinnett County Volunteering Opportunities</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,7 +21,10 @@
             <a class="nav-link" data-target="resources">Resource Hub</a>
             <a class="nav-link" data-target="discover">Discover</a>
             <a class="nav-link" data-target="impact">Our Impact</a>
+            <a class="nav-link" data-target="quiz">Match Me</a>
+
             <a class="nav-link" data-target="submit">Submit a Resource</a>
+            
             <a class="nav-link nav-cta" data-target="contact">Get Involved</a>
         </nav>
         <button class="hamburger" id="hamburger">☰</button>
@@ -31,6 +34,8 @@
         <a class="nav-link" data-target="resources">Resource Hub</a>
         <a class="nav-link" data-target="discover">Discover</a>
         <a class="nav-link" data-target="impact">Our Impact</a>
+        <a class="nav-link" data-target="quiz">Match Me</a>
+
         <a class="nav-link" data-target="submit">Submit a Resource</a>
         <a class="nav-link" data-target="contact">Get Involved</a>
     </div>
@@ -44,7 +49,7 @@
         <div class="hero-inner">
             <span class="hero-pill">Gwinnett County Community Resource Hub</span>
             <h1>Swipe Right to <span class="yellow">Change Lives</span></h1>
-            <p>Think Tinder, but for doing good. Browse volunteer opportunities and community resources that actually fit your life — no pressure, just possibilities.</p>
+            <p>It’s kind of like Tinder, but for doing good. You can scroll through volunteer opportunities and community resources that actually fit your life, with no pressure, just options to get involved when you want.</p>
             <div class="hero-btns">
                 <button class="btn-white" data-target="resources">Explore Resources</button>
                 <button class="btn-outline" data-target="discover">Start Swiping</button>
@@ -93,7 +98,7 @@
                     </div>
                     <div class="spot-body">
                         <h3>Gwinnett Public Library</h3>
-                        <p>Free tutoring, digital literacy classes, ESL programs, and after-school support for students K-12. More than just books — it's a community learning hub.</p>
+                        <p>Free tutoring, digital literacy classes, ESL programs, and after-school support for students K-12.</p>
                         <div class="spot-meta">
                             <span>📍 Multiple locations</span>
                             <span>🌐 gwinnettpl.org</span>
@@ -124,7 +129,7 @@
         <div class="wrap">
             <div class="section-label">🔴 LIVE ACTIVITY</div>
             <h2>Volunteering Happening Right Now</h2>
-            <p class="section-sub">Watch real volunteers making a difference across Gwinnett County</p>
+            <p class="section-sub">Look at recent volunteers!</p>
             <div class="map-layout">
                 <div class="map-box">
                     <svg viewBox="0 0 600 400">
@@ -151,7 +156,7 @@
         <div class="wrap">
             <div class="section-label">⚡ TRY IT OUT</div>
             <h2>Drag These Cards Around</h2>
-            <p class="section-sub">Get a feel for how Discover works — drag left to skip, right to save</p>
+            <p class="section-sub">Get a feel for how Discover works!</p>
             <div class="drag-grid" id="dragGrid">
                 <div class="drag-card" data-orig="0">
                     <div class="drag-img" style="background-image:url('https://images.unsplash.com/photo-1593113598332-cd288d649433?w=500')"></div>
@@ -249,17 +254,92 @@
     <div class="testimonials wrap">
         <h2>What People Are Saying</h2>
         <div class="tgrid">
-            <div class="tcard">"Honestly thought I'd hate waking up early on a Saturday, but the tree planting was actually fun? Plus free coffee." <span>— Sarah M.</span></div>
-            <div class="tcard">"The swipe thing is lowkey genius. Found something in 2 minutes that I've been doing every week for a year." <span>— James L.</span></div>
-            <div class="tcard">"Met my best friend at a food bank event. Also helped 200+ families. Win-win." <span>— Maria G.</span></div>
+            <div class="tcard">"It was really fun! I hated volunteering before but I swiped and I found myself planting trees the next week." <span>— Sarah M.</span></div>
+            <div class="tcard">"It was really hard to find volunteering opportunities so I'm really grateful for this website!" <span>— James L.</span></div>
+            <div class="tcard">"Awesome website!!" <span>— Maria G.</span></div>
         </div>
     </div>
     <div class="about-org wrap">
         <h2>About VolunteerGwinnett</h2>
         <div class="about-grid">
-            <div class="about-card"><h3>🤝 Our Mission</h3><p>We connect Gwinnett County residents with volunteer opportunities and community resources that actually match their schedule and interests. No guilt trips, no pressure.</p></div>
-            <div class="about-card"><h3>💡 Why We Built This</h3><p>Finding volunteer opportunities shouldn't be harder than finding a date. So we made it as easy as swiping right.</p></div>
-            <div class="about-card"><h3>📍 Our Community</h3><p>We're local to Gwinnett — that's the whole point. Every organization on our platform is verified and based right here in the county.</p></div>
+            <div class="about-card"><h3>Our Mission</h3><p>We connect Gwinnett County residents with volunteer opportunities and community resources that actually match their schedule and interests. No guilt trips, no pressure.</p></div>
+            <div class="about-card"><h3>Why We Built This</h3><p>Finding volunteer opportunities shouldn't be harder than finding a date. So we made it as easy as swiping right.</p></div>
+            <div class="about-card"><h3>Our Community</h3><p>We're local to Gwinnett, and we want to help improve our community!</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== QUIZ ===================== -->
+<div id="page-quiz" class="page">
+    <div class="page-top">
+        <div class="section-label">🎯 FIND YOUR MATCH</div>
+        <h1>What Kind of Volunteer Are You?</h1>
+        <p>Answer 4 quick questions and we'll match you with 3 opportunities perfect for you.</p>
+    </div>
+    <div class="quiz-outer wrap">
+        <div class="quiz-card">
+
+            <div class="quiz-prog-bar">
+                <div class="quiz-prog-fill" id="quizProg" style="width:0%"></div>
+            </div>
+
+            <!-- Step 0 -->
+            <div class="quiz-step active" id="qstep-0">
+                <div class="quiz-qlabel">Question 1 of 4</div>
+                <div class="quiz-qtitle">How much time can you give per week?</div>
+                <div class="quiz-options">
+                    <button class="quiz-opt" data-val="short">1–2 hours, I'm pretty busy</button>
+                    <button class="quiz-opt" data-val="med">3–5 hours, I can commit a bit</button>
+                    <button class="quiz-opt" data-val="long">A full day or more, I'm all in</button>
+                </div>
+                <button class="quiz-next" id="qnext-0" disabled>Next →</button>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="quiz-step" id="qstep-1">
+                <div class="quiz-qlabel">Question 2 of 4</div>
+                <div class="quiz-qtitle">What kind of work sounds most appealing?</div>
+                <div class="quiz-options">
+                    <button class="quiz-opt" data-val="outdoor">Outdoor / hands-on (cleanups, planting)</button>
+                    <button class="quiz-opt" data-val="people">Working directly with people</button>
+                    <button class="quiz-opt" data-val="skills">Using my skills (tutoring, organizing)</button>
+                </div>
+                <button class="quiz-next" id="qnext-1" disabled>Next →</button>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="quiz-step" id="qstep-2">
+                <div class="quiz-qlabel">Question 3 of 4</div>
+                <div class="quiz-qtitle">Who do you most want to help?</div>
+                <div class="quiz-options">
+                    <button class="quiz-opt" data-val="families">Families and food insecurity</button>
+                    <button class="quiz-opt" data-val="youth">Kids and youth</button>
+                    <button class="quiz-opt" data-val="environment">The environment and community spaces</button>
+                    <button class="quiz-opt" data-val="seniors">Seniors and elderly residents</button>
+                </div>
+                <button class="quiz-next" id="qnext-2" disabled>Next →</button>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="quiz-step" id="qstep-3">
+                <div class="quiz-qlabel">Question 4 of 4</div>
+                <div class="quiz-qtitle">How often do you want to volunteer?</div>
+                <div class="quiz-options">
+                    <button class="quiz-opt" data-val="once">One-time events only</button>
+                    <button class="quiz-opt" data-val="monthly">Monthly is perfect</button>
+                    <button class="quiz-opt" data-val="weekly">Weekly recurring</button>
+                </div>
+                <button class="quiz-next" id="qnext-3" disabled>See my matches →</button>
+            </div>
+
+            <!-- Results -->
+            <div class="quiz-step" id="qstep-results">
+                <h2 class="quiz-results-title">Your top matches 🎉</h2>
+                <p class="quiz-results-sub">Based on your answers, here are 3 opportunities picked for you</p>
+                <div id="quizResultsList"></div>
+                <button class="quiz-restart" id="quizRestart">Retake quiz</button>
+            </div>
+
         </div>
     </div>
 </div>
@@ -337,7 +417,7 @@
     <div class="page-top">
         <div class="section-label">👋 GET INVOLVED</div>
         <h1>Ready to Make a Difference?</h1>
-        <p>Whether you want to volunteer, partner with us, or just say hi — we actually read these.</p>
+        <p>Whether you want to volunteer, partner with us, or say hi, we would love to receive feedback from you all!</p>
     </div>
     <div class="contact-layout wrap">
         <form id="contactForm" class="contact-form">
@@ -370,20 +450,22 @@
             <div class="faq"><strong>Is this free?</strong><p>Yep. Always will be.</p></div>
             <div class="faq"><strong>Do I need to commit long-term?</strong><p>Nope. One-time events are totally fine.</p></div>
             <div class="faq"><strong>Can I bring friends?</strong><p>Please do! Most events love groups.</p></div>
-            <div class="faq"><strong>How do I add my org?</strong><p>Use the "Submit a Resource" tab — it takes 2 minutes.</p></div>
+            <div class="faq"><strong>How do I add my org?</strong><p>Use the "Submit a Resource" tab, it takes 2 minutes.</p></div>
             <div class="contact-details">
-                <p>📧 hello@volunteergwinnett.org</p>
-                <p>📍 Gwinnett County, GA</p>
-                <p>⏰ Mon–Fri, 9am–5pm EST</p>
+                <p>hello@volunteergwinnett.org</p>
+                <p>Gwinnett County, GA</p>
+                <p>Mon–Fri, 9am–5pm EST</p>
             </div>
         </div>
     </div>
 </div>
 
 <footer class="footer">
-    <p><a href="https://drive.google.com/file/d/1yRVRXqjDgSFJ9NUl7NYEU9-1w-2fRo1o/view?usp=sharing" target="_blank">Copyright form</a></p>
+    <a href="https://drive.google.com/file/d/1hF5Y7LsUarTHf64R4aWa6i9Ob0WvAFWn/view?usp=sharing">References</a>
+    <a href="https://drive.google.com/file/d/1yRVRXqjDgSFJ9NUl7NYEU9-1w-2fRo1o/view">Copyright Form</a>
+    <a href="https://drive.google.com/file/d/1aWvymoDfRhbI4kDHu7vDZZMTYxauqUaa/view?usp=sharing">Worklog</a>
 </footer>
 
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
 </body>
 </html>
