@@ -1,7 +1,7 @@
 import { pageNavigation } from "../store";
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import ExpandedCard from "./Globe/ExpandedCard";
-import { useScrollReveal } from "./useScrollReveal";
+import useScrollReveal from "./UseScrollReveal";
 
 const BADGE_COLORS = [
   { bg: 'bg-rose-50',    text: 'text-rose-700',    border: 'border-rose-200' },

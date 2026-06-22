@@ -2,8 +2,7 @@ import { useState, useRef, useLayoutEffect } from "react";
 import emailjs from "@emailjs/browser";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useScrollReveal } from "./useScrollReveal";
-
+import useScrollReveal from "./UseScrollReveal";
 gsap.registerPlugin(ScrollTrigger);
 
 const CATEGORIES = ["Food", "Education", "Environment", "Housing", "Health", "Youth", "Seniors", "Other"];

@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { pageNavigation } from '../store'
-import { useScrollReveal } from './useScrollReveal';
+import useScrollReveal from "./UseScrollReveal";
 
 const items = [
   {

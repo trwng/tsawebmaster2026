@@ -6,7 +6,7 @@ import Statistics from './Statistics'
 import Highlight from './Highlight'
 import Location from './Location'
 import ExpandedCard from './Globe/ExpandedCard'
-import { useScrollReveal } from './useScrollReveal';
+import useScrollReveal from "./UseScrollReveal";
 
 const Home = () => {
   const changeCurrentPage = pageNavigation((state) => state.changeCurrentPage)

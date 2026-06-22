@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { useScrollReveal } from "./useScrollReveal";
+import useScrollReveal from "./UseScrollReveal";
 
 const REQUIRED = ["name", "email", "reason"];
 

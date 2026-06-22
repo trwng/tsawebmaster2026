@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function useScrollReveal(scopeRef, deps = []) {
+export default function useScrollReveal(scopeRef, deps = []) {
   useGSAP(() => {
     const targets = gsap.utils.toArray('[data-reveal]', scopeRef.current);
     if (!targets.length) return;

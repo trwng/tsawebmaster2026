@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import clsx from "clsx";
 import { pageNavigation } from '../store';
-import { useScrollReveal } from './useScrollReveal';
+import useScrollReveal from "./UseScrollReveal";
 
 
 const API_URL = 'https://volunteer-api-x37c.onrender.com/api/opportunities';
