@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { Draggable } from "gsap/Draggable";
 import { pageNavigation } from "../store";
 import ExpandedCard from "./Globe/ExpandedCard";
-import { useScrollReveal } from "./useScrollReveal";
+import useScrollReveal from "./UseScrollReveal";
 
 gsap.registerPlugin(Draggable);
 

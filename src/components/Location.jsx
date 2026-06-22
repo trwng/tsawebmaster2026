@@ -28,7 +28,7 @@ const BADGE_COLORS = [
     { bg: 'bg-pink-50',    text: 'text-pink-700',    border: 'border-pink-200' },
     { bg: 'bg-slate-50',   text: 'text-slate-700',   border: 'border-slate-200' },
   ];
-
+//testing
   const TYPE_COLOR_MAP = {
     'nonprofit/volunteer':{ bg: 'bg-teal-100/60',  text: 'border-teal-700', border: 'border-teal-200' },
     'community/support service':   { bg: 'bg-amber-100/60', text: 'border-teal-700', border: 'border-amber-200' },
