@@ -468,7 +468,7 @@ html, body {
       @apply mb-8 px-[4vw] text-center md:mb-10;
   
       .rh-title { @apply mb-3 text-3xl font-bold text-gray-900 md:mb-4 md:text-7xl; }
-      .rh-subtitle { @apply text-base text-gray-600 md:text-2xl; }
+      .rh-subtitle { @apply text-base text-gray-500 md:text-2xl; }
     }
   
     .rh-container { @apply mx-[4vw] mb-12 max-w-[92vw]; }
@@ -603,7 +603,7 @@ html, body {
   
     .discover-header { @apply mb-6 mx-auto max-w-[92vw] px-7 text-center; }
     .discover-title { @apply sm:text-7xl text-4xl max-w-[92vw] font-black text-black line-clamp-2;; }
-    .discover-subtitle { @apply mt-1 text-2xl text-[#1F3D2B]/70; }
+    .discover-subtitle { @apply mt-1 text-2xl text-gray-500 }
   
     .discover-loading { @apply flex h-[32rem] flex-col items-center justify-center gap-4; }
     .discover-spinner { @apply h-12 w-12 animate-spin rounded-full border-4 border-[#286A6C]/20 border-t-[#286A6C]; }
@@ -684,7 +684,7 @@ html, body {
     
       .sr-header { @apply mb-8 text-center md:mb-10; }
       .sr-title { @apply mb-3 text-3xl font-bold text-black md:mb-4 md:text-7xl; }
-      .sr-subtitle { @apply text-base text-gray-600 md:text-2xl; }
+      .sr-subtitle { @apply text-base text-gray-500 md:text-2xl; }
       .sr-meta-actions { @apply flex items-center gap-2; }
       .sr-unsave-all { @apply rounded-md border border-red-300 px-2 py-1 font-medium text-red-500 hover:border-red-500 hover:bg-red-50; }
     
