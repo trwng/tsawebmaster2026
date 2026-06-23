@@ -68,7 +68,7 @@ const Footer = () => {
       <hr className="footer-divider" />
 
       <div>
-        <p className="footer-copy">VolunteerGwinnett. All rights reserved.</p>
+        <p className="footer-copy">© 2026 Gwin-NET. All rights reserved.</p>
       </div>
     </footer>
   )

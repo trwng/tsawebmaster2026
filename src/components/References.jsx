@@ -2,8 +2,7 @@ import React, {useRef} from 'react';
 import { useMediaQuery } from 'react-responsive';
 import useScrollReveal from "./UseScrollReveal";
 
-// Put your PDFs in the project's /public folder and reference them with a leading slash.
-// e.g. public/pdfs/volunteer-handbook.pdf  ->  url: '/pdfs/volunteer-handbook.pdf'
+
 const references = [
   {
     title: 'Student Copyright Check',
