@@ -33,9 +33,10 @@ function Header() {
   return (
     <header>
       <nav className={isMobile ? "nav-mobile" : ""}>
-        <div className="logo">
-          <p>VolunteerGwinnett</p>
-        </div>
+        <button onClick={()=> changeCurrentPage("Home")} className="logo flex items-center gap-2 no-underline text-inherit">
+          <img src="/tsawebmaster2026/logo.png" alt="Gwin-Net logo" className="h-8 w-auto" />
+          <p className="text-2xl">Gwin-NET</p>
+        </button>
 
         {isMobile ? (
           <button

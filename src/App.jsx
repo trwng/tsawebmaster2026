@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Header from './components/Header'
 import { pageNavigation } from "./store"
 import Home from './components/Home';
@@ -11,10 +11,21 @@ import Saved_Resources from './components/Saved_Resources';
 import Reference from './components/References';
 function App() {
   const currentPage = pageNavigation((state) => (state.currentPage));
-  if (typeof window !== 'undefined') {
-    window.history.scrollRestoration = 'manual';
-    window.scrollTo(0, 0);
-}
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.history.scrollRestoration = 'manual';
+
+      const timer = setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'instant' // Snaps to top immediately without a smooth scrolling animation
+        });
+      }, 0);
+
+      return () => clearTimeout(timer);
+    }
+  }, [currentPage]);
 
   const renderPage = () => {
     switch (currentPage) {

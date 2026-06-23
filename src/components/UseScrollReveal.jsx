@@ -9,10 +9,9 @@ export default function useScrollReveal(scopeRef, deps = []) {
     const targets = gsap.utils.toArray('[data-reveal]', scopeRef.current);
     if (!targets.length) return;
 
-    // 1. save each element's own transform BEFORE touching it
-    const saved = targets.map((el) => el.style.transform || '');
+    // Remove the manual "saved" mapping step completely
 
-    // 2. hide + offset (this temporarily replaces the transform)
+    // Hide + offset initially
     gsap.set(targets, { opacity: 0, y: 40 });
 
     ScrollTrigger.batch(targets, {
@@ -24,12 +23,10 @@ export default function useScrollReveal(scopeRef, deps = []) {
           duration: 0.8,
           ease: 'power2.out',
           stagger: 0.12,
-          overwrite: true,
+          overwrite: 'auto', // Changed to 'auto' to handle overlapping tweens cleanly
           onComplete() {
-            // 3. add the original transform back
-            this.targets().forEach((el) => {
-              el.style.transform = saved[targets.indexOf(el)] || '';
-            });
+            // Clean up the inline y property without wiping away other styles safely
+            gsap.set(this.targets(), { clearProps: "y" });
           },
         }),
     });

@@ -22,9 +22,9 @@ export const statistics = [
     description: "Gwinnett is one of the fastest growing counties in Georgia which is a large pool of potential volunteers (Gwinnett County, 2026).",
     id: 3
     },
-    {top: "45+", 
+    {top: "70+", 
     sub: "community resources listed ", 
-    description: "This resource hub include over 45 different verified community resources for you to choose from.",
+    description: "This resource hub include over 70 different verified community resources for you to choose from.",
     id: 4
     },
 ]

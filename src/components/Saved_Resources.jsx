@@ -132,7 +132,7 @@ const Saved_Resources = () => {
         </div>
       ) : (
         <>
-          <div className="sr-filters">
+          <div className="sr-filters" data-reveal="">
             <div className="sr-filter-selects">
               <div className="sr-field">
                 <label className="sr-label">City</label>

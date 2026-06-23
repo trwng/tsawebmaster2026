@@ -123,7 +123,7 @@ html, body {
       @apply max-h-[32rem];
     }
     .mobile-menu-inner {
-      @apply flex flex-col border-t border-[#286A6C] bg-[#F7F8F3] py-2;
+      @apply flex flex-col border-t border-[#286A6C] bg-[#F7F8F3] py-2 mb-4;
     }
     .mobile-menu-section {
       @apply mt-1 border-t border-[#286A6C] pt-1;
@@ -277,7 +277,7 @@ html, body {
   
         .outer_view {
           @apply flex w-1/3 h-2/3 items-center justify-center;
-          .title { @apply flex text-3xl [writing-mode:vertical-lr] text-center transform items-center justify-center rotate-180 w-full; }
+          .title { @apply flex text-3xl [writing-mode:vertical-rl] text-center transform items-center justify-center rotate-180 w-full;}          
           .upper_line { @apply absolute h-[5%] top-[10%] w-full bg-[#286A6C]; }
           .lower_line { @apply absolute h-[5%] bottom-[10%] w-full bg-[#286A6C]; }
         }
@@ -314,12 +314,15 @@ html, body {
               @apply text-lg font-semibold;
             }
             .chevron {
-              @apply text-xl transition-transform duration-300;
+              @apply flex h-5 w-5 shrink-0 items-center justify-center transition-transform duration-300;
+              svg {
+                @apply h-full w-full;
+              }
             }
           }
   
           &.is-open .chevron {
-            @apply rotate-180;
+            @apply rotate-180 origin-center;
           }
   
           /* grid 0fr -> 1fr gives a smooth height-auto expand */
@@ -370,7 +373,7 @@ html, body {
         @apply mt-2 text-center text-lg text-gray-500 md:text-3xl;
       }
     }
-    .category_selection { @apply flex w-full flex-nowrap gap-2 overflow-x-auto pb-2; }
+    .category_selection { @apply flex w-full flex-nowrap gap-2 overflow-x-auto p-2; }
     .category_button { @apply shrink-0 cursor-pointer whitespace-nowrap rounded-full border px-4 py-1.5 text-sm font-semibold transition-all; }
   
     .map_container {
@@ -595,12 +598,12 @@ html, body {
    DISCOVER (swipe)
    ============================================================ */
    #discover {
-    @apply min-h-screen bg-[#F7F8F3] pt-[18vh] text-[#1F3D2B];
+    @apply min-h-screen bg-[#F7F8F3] mt-[18vh] text-[#1F3D2B];
   
     .discover-inner { @apply mx-auto max-w-sm px-7 pb-24; }
   
     .discover-header { @apply mb-6 mx-auto max-w-[92vw] px-7 text-center; }
-    .discover-title { @apply text-7xl max-w-[92vw] font-black text-black; }
+    .discover-title { @apply sm:text-7xl text-4xl max-w-[92vw] font-black text-black; }
     .discover-subtitle { @apply mt-1 text-lg text-[#1F3D2B]/70; }
   
     .discover-loading { @apply flex h-[32rem] flex-col items-center justify-center gap-4; }

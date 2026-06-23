@@ -259,14 +259,18 @@ const Location = () => {
                                                 </span>
                                             )}
                                         </div>
-                                        <h4 className="text-2xl font-bold text-[#286A6C] mt-2">{card.title}</h4>
-                                        <p className="text-gray-600 mt-2 font-medium leading-relaxed">{card.description}</p>
-                                        <button
-                                            onClick={() => learnMore(card)}
-                                            className="mt-3 self-start rounded-md border border-[#286A6C] bg-transparent px-3 py-1.5 text-sm font-semibold text-[#286A6C] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#286A6C] hover:text-white"
-                                        >
-                                            Learn more
-                                        </button>
+                                        <div className="flex flex-col gap-8">
+                                            <div>
+                                                <h4 className="text-2xl font-bold text-[#286A6C] mt-2">{card.title}</h4>
+                                                <p className="text-gray-600 mt-2 font-medium leading-relaxed">{card.description}</p>
+                                            </div>
+                                            <button
+                                                onClick={() => learnMore(card)}
+                                                className="mt-3 self-start rounded-md border border-[#286A6C] bg-transparent px-3 py-1.5 text-sm font-semibold text-[#286A6C] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#286A6C] hover:text-white"
+                                            >
+                                                Learn more
+                                            </button>
+                                        </div>
                                     </div>
                                 );
                             })

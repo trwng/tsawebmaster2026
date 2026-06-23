@@ -5,6 +5,15 @@ import gsap from 'gsap';
 import { pageNavigation } from '../store'
 import useScrollReveal from "./UseScrollReveal";
 
+const Chevron = () => (
+  <svg
+    className="pointer-events-none h-4 w-4 text-gray-400"
+    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+  </svg>
+);
+
 const items = [
   {
     id: 's4',
@@ -85,7 +94,9 @@ const Highlight = () => {
                   aria-expanded={open}
                 >
                   <span className="title">{it.title}</span>
-                  <span className="chevron">▾</span>
+                  <span className="chevron">
+                    <Chevron/>
+                  </span>
                 </button>
                 <div className="block_body">
                   <div className="block_body_inner">

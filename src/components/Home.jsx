@@ -46,8 +46,15 @@ const Home = () => {
         )}
       </section>
 
+      {isMobile && (
+        <hr className="border-[#D4D3D3] border-2 sm:mt-4 mt-10"/>
+      )}
       <Statistics sphereRef={sphereRef} />
+      {isMobile && (
+        <hr className="border-[#D4D3D3] border-2 sm:mb-4 mb-10"/>
+      )}
       <Highlight />
+      <hr className="border-[#D4D3D3] border-2 sm:mt-4 mt-10"/>
       <Location />
       <ExpandedCard card={expanded} onClose={() => setExpanded(null)} />
     </div>

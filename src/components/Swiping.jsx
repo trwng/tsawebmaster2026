@@ -90,7 +90,7 @@ export default function Discover() {
   const lockRef = useRef(false);
   const toppestRef = useRef(null);
 
-  useScrollReveal(toppestRef);
+  useScrollReveal(toppestRef, [isLoading]);
 
   useEffect(() => {
     fetch(API_URL)
@@ -236,7 +236,7 @@ export default function Discover() {
         ) : (
           <>
             {all.length > 0 && (
-              <div className="discover-filters">
+              <div className="discover-filters" data-reveal="">
                 <div className="discover-filter-selects">
                   <div className="discover-field">
                     <label className="discover-label">City</label>
@@ -286,16 +286,17 @@ export default function Discover() {
                   <button onClick={clearFilters} className="discover-nomatch-btn">Clear filters</button>
                 </div>
               ) : (
-                <EndScreen count={matched.length} onReset={reset} />
+                <EndScreen count={matched.length} onReset={reset} data-reveal="" />
               )
             ) : (
               <>
-                <CardStack deck={deck} topRef={topRef} onView={setExpanded} />
+                <CardStack deck={deck} topRef={topRef} onView={setExpanded} data-reveal=""/>
                 <Controls
                   onSkip={() => flingRef.current?.("left")}
                   onSave={() => flingRef.current?.("right")}
                   onUndo={undo}
                   canUndo={!!lastSwiped}
+                  data-reveal=""
                 />
               </>
             )}

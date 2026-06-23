@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useMemo, useLayoutEffect } from 're
 import { gsap } from 'gsap';
 import { pageNavigation } from "../store";
 import ExpandedCard from './Globe/ExpandedCard';
+import useScrollReveal from './UseScrollReveal';
 
 const BADGE_COLORS = [
   { bg: 'bg-rose-50',    text: 'text-rose-700',    border: 'border-rose-200' },
@@ -71,6 +72,8 @@ const Resource_Hub = () => {
 
   const gridRef = useRef(null);
   const topRef = useRef(null);
+
+  useScrollReveal(topRef, [isLoading])
 
   const API_URL = 'https://volunteer-api-x37c.onrender.com/api/opportunities';
 
@@ -272,16 +275,16 @@ const Resource_Hub = () => {
 
   return (
     <section ref={topRef} id="resource_hub">
-      <div className="rh-header">
-        <h1 className="rh-title">Discover Resources in <span className="text-[#286A6C]"> Gwinnett</span></h1>
-        <p className="rh-subtitle">
-          Search and filter 45+ verified community organizations, support services, and programs
+      <div className="rh-header" >
+        <h1 className="rh-title" data-reveal="">Discover Resources in <span className="text-[#286A6C]" data-reveal=""> Gwinnett</span></h1>
+        <p className="rh-subtitle" data-reveal="">
+          Search and filter 70+ verified community organizations, support services, and programs
         </p>
       </div>
 
       <div className="rh-container">
         {!isLoading && (
-          <div className="rh-filters">
+          <div className="rh-filters" data-reveal="">
             <div className="rh-filter-fields">
               <div className="rh-filter-row">
                 <div className="rh-field">
@@ -354,7 +357,7 @@ const Resource_Hub = () => {
           </div>
         )}
 
-        <div ref={gridRef} className="rh-grid">
+        <div ref={gridRef} className="rh-grid" data-reveal="">
           {isLoading
             ? Array(ITEMS_PER_PAGE).fill(0).map((_, index) => <SkeletonCard key={index} />)
             : displayedEvents.map((event) => {

@@ -114,7 +114,7 @@ const Get_Involved = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="w-full space-y-6">
-              <div data-reveal="">
+              <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2" >
                   What should we call you? <span className="text-red-500">*</span>
                 </label>
@@ -128,7 +128,7 @@ const Get_Involved = () => {
                 {errors.name && <span className="block text-xs font-medium text-red-500 mt-1.5">{errors.name}</span>}
               </div>
 
-              <div data-reveal="">
+              <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Where can we reach you? <span className="text-red-500">*</span>
                 </label>
@@ -143,7 +143,7 @@ const Get_Involved = () => {
                 {errors.email && <span className="block text-xs font-medium text-red-500 mt-1.5">{errors.email}</span>}
               </div>
 
-              <div data-reveal="">
+              <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   What brings you here? <span className="text-red-500">*</span>
                 </label>
@@ -163,7 +163,7 @@ const Get_Involved = () => {
                 {errors.reason && <span className="block text-xs font-medium text-red-500 mt-1.5">{errors.reason}</span>}
               </div>
 
-              <div data-reveal="">
+              <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   What's on your mind?
                 </label>
