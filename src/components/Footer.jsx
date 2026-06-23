@@ -29,7 +29,7 @@ const Footer = () => {
       <div className="footer-top">
         <div className="footer-about">
           <div className="footer-about-text">
-          <button onClick={()=> changeCurrentPage("Home")} className="logo flex items-center gap-2 no-underline text-inherit">
+          <button onClick={()=> changeCurrentPage("Home")} className="logo flex items-start gap-2 no-underline text-inherit">
             <img src="/tsawebmaster2026/logo.png" alt="Gwin-Net logo" className="h-10 w-auto" />
             <p className="brand">Gwin-NET</p>
           </button>

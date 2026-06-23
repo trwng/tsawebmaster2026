@@ -421,7 +421,7 @@ html, body {
       @apply flex w-full flex-col items-start gap-8 md:w-[40%];
   
       .footer-about-text {
-        @apply flex flex-col gap-4;
+        @apply flex flex-col gap-4 items-start;
       }
   
       .brand {
