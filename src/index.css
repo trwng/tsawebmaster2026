@@ -603,7 +603,7 @@ html, body {
   
     .discover-header { @apply mb-6 mx-auto max-w-[92vw] px-7 text-center; }
     .discover-title { @apply sm:text-7xl text-4xl max-w-[92vw] font-black text-black line-clamp-2;; }
-    .discover-subtitle { @apply mt-1 text-lg text-[#1F3D2B]/70; }
+    .discover-subtitle { @apply mt-1 text-2xl text-[#1F3D2B]/70; }
   
     .discover-loading { @apply flex h-[32rem] flex-col items-center justify-center gap-4; }
     .discover-spinner { @apply h-12 w-12 animate-spin rounded-full border-4 border-[#286A6C]/20 border-t-[#286A6C]; }
