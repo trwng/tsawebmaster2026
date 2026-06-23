@@ -8,6 +8,24 @@ import Location from './Location'
 import ExpandedCard from './Globe/ExpandedCard'
 import useScrollReveal from "./UseScrollReveal";
 
+const Arrow = () => {
+  return (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      strokeWidth={2.5} 
+      stroke="currentColor" 
+      className="w-6 h-6 shrink-0 md:w-8 md:h-8"
+    >
+      <path 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" 
+      />
+    </svg>
+  );
+};
 const Home = () => {
   const changeCurrentPage = pageNavigation((state) => state.changeCurrentPage)
   const sphereRef = useRef(null)
@@ -35,7 +53,7 @@ const Home = () => {
           </div >
           <button onClick={() => changeCurrentPage("Resource Hub")}  >
             Start Exploring
-            <img />
+            <Arrow/>
           </button>
         </div>
 

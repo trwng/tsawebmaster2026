@@ -14,6 +14,25 @@ const Chevron = () => (
   </svg>
 );
 
+const Arrow = () => {
+  return (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      strokeWidth={2.5} 
+      stroke="currentColor" 
+      className="w-6 h-6 shrink-0 md:w-8 md:h-8"
+    >
+      <path 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" 
+      />
+    </svg>
+  );
+};
+
 const items = [
   {
     id: 's4',
@@ -103,7 +122,7 @@ const Highlight = () => {
                     <div className="block_body_content">
                       <p className="tag">{it.tag}</p>
                       <p className="description">{it.description}</p>
-                      <button onClick={() => openInHub(it.id)}>Learn More</button>
+                      <button onClick={() => openInHub(it.id)}>Learn More <Arrow/> </button>
                     </div>
                   </div>
                 </div>
@@ -129,7 +148,7 @@ const Highlight = () => {
                   </div>
                   <p className="description">{it.description}</p>
                 </div>
-                <button onClick={() => openInHub(it.id)}>Learn More</button>
+                <button onClick={() => openInHub(it.id)}>Learn More <Arrow/> </button>
               </div>
             </div>
           ))}
@@ -137,7 +156,7 @@ const Highlight = () => {
       )}
 
       <div className="w-full">
-        <button onClick={() => changeCurrentPage("Resource Hub")}>Start Discovering</button>
+        <button onClick={() => changeCurrentPage("Resource Hub")}>Start Discovering <Arrow/> </button>
       </div>
     </section>
   )

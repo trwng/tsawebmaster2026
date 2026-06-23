@@ -2,6 +2,25 @@ import React from 'react'
 import { pageNavigation } from '../store'
 import { headerLinks } from '../constants'
 
+const Arrow = () => {
+  return (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      strokeWidth={2.5} 
+      stroke="currentColor" 
+      className="w-6 h-6 shrink-0 md:w-8 md:h-8 -rotate-90"
+    >
+      <path 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" 
+      />
+    </svg>
+  );
+};
+
 const Footer = () => {
   const changeCurrentPage = pageNavigation((state) => state.changeCurrentPage)
 
@@ -22,7 +41,7 @@ const Footer = () => {
             className="footer-top-btn"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            Go Back to the Top
+            Go Back to the Top <Arrow/>
           </button>
         </div>
 

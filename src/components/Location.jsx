@@ -5,6 +5,24 @@ import clsx from "clsx";
 import { pageNavigation } from '../store';
 import useScrollReveal from "./UseScrollReveal";
 
+const Arrow = () => {
+    return (
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        fill="none" 
+        viewBox="0 0 24 24" 
+        strokeWidth={2.5} 
+        stroke="currentColor" 
+        className="w-6 h-6 shrink-0 md:w-8 md:h-8"
+      >
+        <path 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" 
+        />
+      </svg>
+    );
+  };
 
 const API_URL = 'https://volunteer-api-x37c.onrender.com/api/opportunities';
 
@@ -268,7 +286,7 @@ const Location = () => {
                                                 onClick={() => learnMore(card)}
                                                 className="mt-3 self-start rounded-md border border-[#286A6C] bg-transparent px-3 py-1.5 text-sm font-semibold text-[#286A6C] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#286A6C] hover:text-white"
                                             >
-                                                Learn more
+                                                Learn more <Arrow/>
                                             </button>
                                         </div>
                                     </div>
@@ -281,12 +299,12 @@ const Location = () => {
 
             <div className="flex w-full mt-10 md:mt-16">
                 <div className="flex w-full flex-col items-center gap-4 md:w-auto md:flex-row">
-                    <button onClick={() => changeCurrentPage("Match Me")} className="w-full md:w-auto bg-[#286A6C] text-lg md:text-3xl text-white rounded-2xl py-3 px-6 md:py-4 md:px-8 shadow-[4px_4px_8px_rgba(0,0,0,.4)] transition-all duration-300 hover:bg-[#33878a] hover:-translate-y-1 hover:shadow-[4px_4px_8px_#286A6C]">
-                        Find Your Match
+                    <button onClick={() => changeCurrentPage("Match Me")} className="flex items-center justify-center gap-3 w-full md:w-auto bg-[#286A6C] text-lg md:text-3xl text-white rounded-2xl py-3 px-6 md:py-4 md:px-8 shadow-[4px_4px_8px_rgba(0,0,0,.4)] transition-all duration-300 hover:bg-[#33878a] hover:-translate-y-1 hover:shadow-[4px_4px_8px_#286A6C]">
+                        Find Your Match <Arrow/>
                     </button>
                     <p className="text-lg md:text-3xl md:mx-8">or</p>
-                    <button onClick={() => changeCurrentPage("Submit Resources")} className="w-full md:w-auto text-lg md:text-3xl rounded-2xl py-3 px-6 md:py-4 md:px-8 bg-transparent border border-2 border-[#286A6C] text-[#286A6C] hover:bg-[#286A6C] transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_8px_#286A6C] hover:text-white">
-                        Submit New Resources
+                    <button onClick={() => changeCurrentPage("Submit Resources")} className=" flex items-center justify-center gap-3 w-full md:w-auto text-lg md:text-3xl rounded-2xl py-3 px-6 md:py-4 md:px-8 bg-transparent border border-2 border-[#286A6C] text-[#286A6C] hover:bg-[#286A6C] transition-all duration-300 hover:-translate-y-1 hover:shadow-[4px_4px_8px_#286A6C] hover:text-white">
+                        Submit New Resources <Arrow/>
                     </button>
                 </div>
             </div>

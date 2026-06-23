@@ -138,8 +138,7 @@ html, body {
   #landing {
     @apply relative mx-[4vw] mt-[12vh] flex w-[92vw] flex-col md:mt-[18vh] md:min-h-[75vh] md:flex-row md:justify-between;
   
-    button { @apply rounded-2xl bg-[#286A6C] px-6 py-3 text-xl text-white shadow-[4px_4px_8px_rgba(0,0,0,.4)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#33878a] hover:shadow-[4px_4px8px#286A6C] md:mb-8 md:px-8 md:py-4 md:text-3xl; }
-  
+    button { @apply flex items-center justify-center gap-3 rounded-2xl bg-[#286A6C] px-6 py-3 text-xl text-white shadow-[4px_4px_8px_rgba(0,0,0,.4)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#33878a] hover:shadow-[4px_4px_8px_#286A6C] md:mb-8 md:px-8 md:py-4 md:text-3xl; }  
     .text-body {
       @apply flex flex-col;
       .wrapper {
@@ -262,7 +261,7 @@ html, body {
     @apply flex flex-col min-h-[110vh] w-[92vw] mx-[4vw] items-center gap-16;
   
     button {
-      @apply bg-[#286A6C] w-fit text-3xl text-white rounded-2xl py-4 px-8 shadow-[4px_4px_8px_rgba(0,0,0,.4)] transition-all duration-300 hover:bg-[#33878a] hover:-translate-y-1 hover:shadow-[4px_4px_8px_#286A6C];
+      @apply flex items-center justify-center gap-3 bg-[#286A6C] w-fit text-3xl text-white rounded-2xl py-4 px-8 shadow-[4px_4px_8px_rgba(0,0,0,.4)] transition-all duration-300 hover:bg-[#33878a] hover:-translate-y-1 hover:shadow-[4px_4px_8px_#286A6C];
     }
   
     .block_container {
@@ -411,7 +410,7 @@ html, body {
     @apply bg-[#286A6C] px-[4vw] pb-[4vh] text-white;
   
     button {
-      @apply cursor-pointer;
+      @apply cursor-pointer flex items-center justify-center gap-3;
     }
   
     .footer-top {
@@ -553,9 +552,9 @@ html, body {
     }
     .rh-card-meta { @apply mb-4 flex flex-col gap-1; }
     .rh-card-org { @apply text-sm font-medium text-gray-800; }
-    .rh-card-locrow { @apply flex items-center justify-between text-sm text-gray-500; }
+    .rh-card-locrow { @apply flex items-center gap-2 text-sm text-gray-500; }
     .rh-card-date { @apply font-medium text-[#286A6C]; }
-    .rh-card-link { @apply truncate text-xs text-gray-400 hover:text-[#286A6C]; }
+    .rh-card-link { @apply flex items-center gap-2 text-current truncate text-xs text-gray-400 hover:text-[#286A6C]; }
     .rh-card-descwrap { @apply flex flex-col items-start gap-4 pt-4; }
     .rh-card-desc { @apply text-sm leading-relaxed text-gray-600 line-clamp-3; }
     .rh-card-actions { @apply mt-auto flex w-full justify-start; }
@@ -603,7 +602,7 @@ html, body {
     .discover-inner { @apply mx-auto max-w-sm px-7 pb-24; }
   
     .discover-header { @apply mb-6 mx-auto max-w-[92vw] px-7 text-center; }
-    .discover-title { @apply sm:text-7xl text-4xl max-w-[92vw] font-black text-black; }
+    .discover-title { @apply sm:text-7xl text-4xl max-w-[92vw] font-black text-black line-clamp-2;; }
     .discover-subtitle { @apply mt-1 text-lg text-[#1F3D2B]/70; }
   
     .discover-loading { @apply flex h-[32rem] flex-col items-center justify-center gap-4; }
@@ -643,7 +642,8 @@ html, body {
     .discover-card-tag { @apply shrink-0 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide; }
     .discover-card-meta { @apply mb-4 flex flex-col gap-1; }
     .discover-card-org { @apply text-sm font-medium text-gray-800; }
-    .discover-card-metarow { @apply mt-2 flex flex-wrap gap-x-4 gap-y-2 text-xs text-[#1F3D2B]/65; }
+    .discover-card-metarow { @apply flex items-center gap-2 text-sm text-gray-500;  }
+    .discover-card-link { @apply flex items-center gap-2 text-current truncate text-xs text-gray-400 hover:text-[#286A6C]; }
     .discover-meta { @apply flex items-center gap-1.5; }
     .discover-card-descwrap { @apply flex flex-col items-start gap-4 pt-4; }
     .discover-card-desc { @apply text-sm leading-relaxed text-gray-600; }    
@@ -728,9 +728,9 @@ html, body {
       .sr-card-tag { @apply shrink-0 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide; }
       .sr-card-meta { @apply mb-4 flex flex-col gap-1; }
       .sr-card-org { @apply text-sm font-medium text-gray-800; }
-      .sr-card-locrow { @apply flex items-center justify-between text-sm text-gray-500; }
+      .sr-card-locrow { @apply flex items-center gap-2 text-sm text-gray-500; }
       .sr-card-date { @apply font-medium text-[#286A6C]; }
-      .sr-card-link { @apply truncate text-xs text-gray-400 hover:text-[#286A6C]; }
+      .sr-card-link {@apply flex items-center gap-2 text-current truncate text-xs text-gray-400 hover:text-[#286A6C];}
       .sr-card-descwrap { @apply flex flex-col items-start gap-4 pt-4; }
       .sr-card-desc { @apply text-sm leading-relaxed text-gray-600 line-clamp-3; }
       .sr-card-actions { @apply mt-auto flex w-full justify-start; }

@@ -3,6 +3,24 @@ import { pageNavigation } from '../../store'
 import { gsap } from 'gsap'
 
 // fixed palette — full literal class names so Tailwind keeps them
+const Arrow = () => {
+  return (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      strokeWidth={2.5} 
+      stroke="currentColor" 
+      className="w-6 h-6 shrink-0 md:w-8 md:h-8"
+    >
+      <path 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" 
+      />
+    </svg>
+  );
+};
 const BADGE_COLORS = [
   { bg: 'bg-rose-50',    text: 'text-rose-700',    border: 'border-rose-200' },
   { bg: 'bg-amber-50',   text: 'text-amber-700',   border: 'border-amber-200' },
@@ -189,9 +207,7 @@ export default function ExpandedCard({ card, onClose, resource_hub = false }) {
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#286A6C] hover:bg-[#1f5456] text-white font-semibold shadow-md transition-colors"
           >
             Open in Resource Hub
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+           <Arrow/>
           </button>
           )}
         </div>
