@@ -204,6 +204,7 @@ const Saved_Resources = () => {
                 </select>
               </div>
             </div>
+            <label className="sr-label">Name</label>
             <input
               type="text"
               className="sr-input"

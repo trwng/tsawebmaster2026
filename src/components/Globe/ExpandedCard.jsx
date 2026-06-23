@@ -174,7 +174,15 @@ export default function ExpandedCard({ card, onClose, resource_hub = false }) {
           {/* three stacked rows: link, organization, location */}
           <div className="flex flex-col gap-4 py-4 sm:py-6 border-y border-gray-200 mb-6 sm:mb-8 bg-white rounded-lg px-4 sm:px-6">
             <div>
-              <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">Link</div>
+            <div>
+              <div className="text-xs text-[#286A6C]  uppercase tracking-wider mb-1">Organization</div>
+              <div className="font-semibold text-gray-900 mb-2">{card.org}</div>
+            </div>
+            <div>
+              <div className="text-xs text-[#286A6C]  uppercase tracking-wider mb-1">Location</div>
+              <div className="font-semibold text-gray-900 mb-2">{card.location}</div>
+            </div>
+              <div className="text-xs text-[#286A6C] uppercase tracking-wider mb-1">Link</div>
               {card.link ? (
                 <a
                   href={card.link}
@@ -188,14 +196,7 @@ export default function ExpandedCard({ card, onClose, resource_hub = false }) {
                 <div className="font-semibold text-gray-400">—</div>
               )}
             </div>
-            <div>
-              <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">Organization</div>
-              <div className="font-semibold text-gray-900">{card.org}</div>
-            </div>
-            <div>
-              <div className="text-xs text-gray-500 uppercase tracking-wider mb-1">Location</div>
-              <div className="font-semibold text-gray-900">{card.location}</div>
-            </div>
+            
           </div>
 
           <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">About this opportunity</h2>
@@ -204,7 +205,7 @@ export default function ExpandedCard({ card, onClose, resource_hub = false }) {
           {!resource_hub && (
             <button
             onClick={openInHub}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#286A6C] hover:bg-[#1f5456] text-white font-semibold shadow-md transition-colors"
+            className="flex items-center justify-center gap-3 rounded-2xl bg-[#286A6C] px-6 py-3 text-xl text-white shadow-[4px_4px_8px_rgba(0,0,0,.4)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#33878a] hover:shadow-[4px_4px_8px_#286A6C] md:mb-8 md:px-8 md:py-4 md:text-3xl;"
           >
             Open in Resource Hub
            <Arrow/>
