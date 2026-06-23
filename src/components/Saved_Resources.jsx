@@ -183,12 +183,25 @@ const Saved_Resources = () => {
           ) : (
             <div className="sr-grid">
               {visibleSaved.map((event) => {
-                const typeColor = typeColorFor(event.type);
-                const tagColor = colorFor(event.tag);
-                return (
-                  <div key={event.id} onClick={() => setExpanded(event)} className="sr-card">
+              const typeColor = typeColorFor(event.type);
+              const tagColor = colorFor(event.tag);
+              return (
+                <div key={event.id} onClick={() => setExpanded(event)} className="sr-card">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); removeSaved(event.id); }}
+                    className="sr-card-remove"
+                    aria-label="Remove"
+                  >
+                    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="#286A6C" stroke="#286A6C" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round"
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                  </button>
+
+                  <div className="sr-card-media">
                     <img
-                      src={event.img_url} alt={event.title}
+                      src={event.img_url}
+                      alt={event.title}
                       className="sr-card-img"
                       onError={(e) => (e.target.src = 'https://placehold.co/800x500/e2e8f0/475569?text=Image+Not+Found')}
                     />
@@ -197,28 +210,39 @@ const Saved_Resources = () => {
                         <span className={`sr-type-pill ${typeColor.bg} ${typeColor.text} ${typeColor.border}`}>{event.type}</span>
                       </div>
                     )}
-                    <button
-                      onClick={(e) => { e.stopPropagation(); removeSaved(event.id); }}
-                      className="sr-card-remove"
-                      aria-label="Remove"
-                    >
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="#286A6C" stroke="#286A6C" strokeWidth="2">
-                        <path strokeLinecap="round" strokeLinejoin="round"
-                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                      </svg>
-                    </button>
+                  </div>
 
-                    <div className="sr-card-body">
+                  <div className="sr-card-body">
+                    <div className="sr-card-inner">
                       <div className="sr-card-head">
                         <h2 className="sr-card-title">{event.title}</h2>
                         <span className={`sr-card-tag ${tagColor.bg} ${tagColor.text} ${tagColor.border}`}>{event.tag}</span>
                       </div>
-                      <div className="sr-card-org">{event.org}</div>
-                      <div className="sr-card-locrow">
-                        <span>{event.location}</span>
-                        <span className="sr-card-date">{formatDate(event.event_date) || 'Flexible'}</span>
+
+                      <div className="sr-card-meta">
+                        <div className="sr-card-org">{event.org}</div>
+                        <div className="sr-card-locrow">
+                          <span>{event.location}</span>
+                        </div>
+                        <a className="sr-card-link" href={event.link} onClick={(e) => e.stopPropagation()}>
+                            {event.link}
+                          </a>
+
+                          <div className="sr-card-descwrap">
+                            <p className="sr-card-desc">{event.description}</p>
+                            <hr className="w-full" />
+                          </div>
                       </div>
-                      <p className="sr-card-desc">{event.description}</p>
+
+                      {/* <a className="rh-card-link" href={event.link} onClick={(e) => e.stopPropagation()}>
+                            {event.link}
+                          </a>
+                          <div className="rh-card-descwrap">
+                            <p className="rh-card-desc">{event.description}</p>
+                            <hr className="w-full" />
+                          </div>
+                          */}
+
                       <div className="sr-card-actions">
                         <button
                           className="sr-card-btn"
@@ -229,8 +253,9 @@ const Saved_Resources = () => {
                       </div>
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              );
+            })}
             </div>
           )}
         </>

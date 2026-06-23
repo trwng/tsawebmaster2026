@@ -50,14 +50,6 @@ const hashString = (str = '') => {
 };
 const colorFor = (value) => BADGE_COLORS[hashString(String(value)) % BADGE_COLORS.length];
 
-const formatDate = (s) => {
-  if (!s) return "Flexible";
-  const d = new Date(s);
-  if (isNaN(d.getTime())) return "Flexible";
-  d.setMinutes(d.getMinutes() + d.getTimezoneOffset());
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-};
-
 const getCity = (loc) => {
   if (!loc) return "";
   const parts = String(loc).split(",").map((s) => s.trim()).filter(Boolean);
@@ -353,7 +345,6 @@ function CardStack({ deck, topRef, onView }) {
                 <div className="discover-card-meta">
                   <div className="discover-card-org">{o.org}</div>
                   <dl className="discover-card-metarow">
-                    <Meta icon="📅">{formatDate(o.event_date)}</Meta>
                     {o.location && <Meta icon="📍">{o.location}</Meta>}
                   </dl>
                   <div className="discover-card-descwrap">

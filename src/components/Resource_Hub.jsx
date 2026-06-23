@@ -404,11 +404,19 @@ const Resource_Hub = () => {
                           </span>
                         </div>
 
+
+                        {/*
+                        <div className="sr-card-org">{event.org}</div>
+                      <div className="sr-card-locrow">
+                        <span>{event.location}</span>
+                      </div>
+
+                      <p className="sr-card-desc">{event.description}</p>
+                      */}
                         <div className="rh-card-meta">
                           <div className="rh-card-org">{event.org}</div>
                           <div className="rh-card-locrow">
                             <span>{event.location}</span>
-                            <span className="rh-card-date">{formatDate(event.event_date) || 'Flexible'}</span>
                           </div>
                           <a className="rh-card-link" href={event.link} onClick={(e) => e.stopPropagation()}>
                             {event.link}
